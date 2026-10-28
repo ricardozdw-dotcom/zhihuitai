@@ -1,0 +1,122 @@
+.qa-app {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 66px);
+  min-height: 0;
+  overflow: hidden;
+  background: #f4f6fb;
+}
+
+.qa-app__switcher {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 20px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.qa-app__back {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  margin-right: 8px;
+  padding: 0 12px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: #5d667c;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.qa-app__scenario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #5d667c;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.qa-app__scenario strong {
+  display: block;
+  color: #202941;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.qa-app__scenario small {
+  display: block;
+  color: #8b93a6;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.qa-app__scenario.is-active {
+  border-color: #e1e4ff;
+  background: #f7f7ff;
+}
+
+.qa-app__scenario-icon {
+  color: #5b67f1;
+  font-size: 16px;
+}
+
+.qa-app__body {
+  min-height: 0;
+  flex: 1;
+}
+
+.qa-app__body.is-hidden {
+  display: none;
+}
+
+.qa-app .chat-page {
+  height: 100%;
+}
+
+.qa-report {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 32px 16px;
+}
+
+.qa-report__card {
+  width: min(520px, 100%);
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.qa-report__card h1 {
+  margin: 12px 0 8px;
+  color: #202941;
+  font-size: 24px;
+}
+
+.qa-report__card p {
+  margin: 0 0 8px;
+  color: #5d667c;
+  line-height: 1.7;
+}
+
+.qa-report__card .ant-btn {
+  margin-top: 12px;
+}

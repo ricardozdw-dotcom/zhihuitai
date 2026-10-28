@@ -1,0 +1,40 @@
+.document-edit-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.document-edit-form > .ant-alert,
+.document-edit-field--wide {
+  grid-column: 1 / -1;
+}
+
+.document-edit-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.document-edit-field > span {
+  color: #505a70;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.document-edit-field .ant-input,
+.document-edit-field .ant-select {
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .document-edit-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .document-edit-form > .ant-alert,
+  .document-edit-field--wide {
+    grid-column: auto;
+  }
+}

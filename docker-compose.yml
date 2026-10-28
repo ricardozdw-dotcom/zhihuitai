@@ -1,0 +1,74 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: zhihuitai
+      POSTGRES_PASSWORD: zhihuitai
+      POSTGRES_DB: zhihuitai
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zhihuitai -d zhihuitai"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  api:
+    build: ./backend
+    env_file:
+      - ./backend/.env.example
+    environment:
+      DATABASE_URL: postgresql+psycopg://zhihuitai:zhihuitai@postgres:5432/zhihuitai
+      REDIS_URL: redis://redis:6379/0
+      BLOB_DIR: /data/blobs
+      INGEST_INLINE: "false"
+      CORS_ORIGINS: http://127.0.0.1:43123,http://localhost:43123
+    ports:
+      - "43180:8000"
+    volumes:
+      - blobs:/data/blobs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 8s
+      timeout: 5s
+      retries: 12
+
+  worker:
+    build: ./backend
+    env_file:
+      - ./backend/.env.example
+    environment:
+      DATABASE_URL: postgresql+psycopg://zhihuitai:zhihuitai@postgres:5432/zhihuitai
+      REDIS_URL: redis://redis:6379/0
+      BLOB_DIR: /data/blobs
+      INGEST_INLINE: "false"
+    volumes:
+      - blobs:/data/blobs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ["sh", "-c", "alembic upgrade head && celery -A app.workers.celery_app:celery_app worker --loglevel=info"]
+
+volumes:
+  pgdata:
+  blobs:

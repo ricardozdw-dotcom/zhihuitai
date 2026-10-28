@@ -1,0 +1,17 @@
+{
+  "name": "知汇台 · 完整功能测试",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/zhihuitai",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" }
+  },
+  "forwardPorts": [43123],
+  "portsAttributes": {
+    "43123": { "label": "知汇台完整测试", "onAutoForward": "openBrowser", "protocol": "http" }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh"
+}

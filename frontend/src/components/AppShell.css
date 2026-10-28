@@ -1,0 +1,350 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.deployment-notice {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 18px 30px 0;
+  padding: 12px 16px;
+  border: 1px solid #cbd5ff;
+  border-radius: 10px;
+  background: #f0f4ff;
+  color: #526080;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.deployment-notice strong { color: #4d59db; }
+.deployment-notice a { margin-left: auto; color: #4d59db; }
+
+.app-rail {
+  position: fixed;
+  z-index: 30;
+  inset: 0 auto 0 0;
+  display: flex;
+  width: 92px;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(226, 229, 238, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 8px 0 28px rgba(34, 44, 82, 0.035);
+  backdrop-filter: blur(18px);
+}
+
+.brand-mark {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-top: 22px;
+  place-items: center;
+  border: 0;
+  border-radius: 15px;
+  color: #fff;
+  background: linear-gradient(145deg, #6873f6, #4d59db);
+  box-shadow: 0 10px 24px rgba(91, 103, 241, 0.28);
+  cursor: pointer;
+}
+
+.brand-mark span {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.app-nav {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 32px;
+  padding: 0 10px;
+}
+
+.app-nav__item {
+  position: relative;
+  display: flex;
+  min-height: 66px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 14px;
+  color: #7b8499;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.app-nav__item:hover {
+  color: #4d59db;
+  background: #f5f6ff;
+  transform: translateY(-1px);
+}
+
+.app-nav__item.is-active {
+  color: #4d59db;
+  background: linear-gradient(145deg, #f1f2ff, #f8f8ff);
+}
+
+.app-nav__item.is-active::before {
+  position: absolute;
+  left: -10px;
+  width: 3px;
+  height: 28px;
+  border-radius: 0 3px 3px 0;
+  background: #5b67f1;
+  content: '';
+}
+
+.app-nav__icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.app-rail__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 18px;
+}
+
+.security-indicator {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 10px;
+  color: #20a779;
+  background: #edf9f5;
+}
+
+.role-switcher {
+  display: flex;
+  width: 74px;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  color: #70798e;
+  background: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.role-switcher .ant-avatar {
+  color: #5864e7;
+  background: #eef0ff;
+  box-shadow: inset 0 0 0 1px #dfe2ff;
+}
+
+.role-popover {
+  width: 230px;
+  padding: 4px;
+}
+
+.role-popover__eyebrow {
+  margin-bottom: 4px;
+  color: #8a92a5;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.role-popover strong {
+  color: #18213a;
+  font-size: 16px;
+}
+
+.role-popover p {
+  margin: 8px 0 14px;
+  color: #7a8397;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.app-workspace {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.app-topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  height: 66px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(226, 229, 238, 0.82);
+  background: rgba(248, 249, 253, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.app-topbar__product {
+  color: #27314a;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.app-topbar__divider {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  margin: 0 13px -3px;
+  background: #daddE7;
+}
+
+.app-topbar__page {
+  color: #7b8497;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.app-topbar > div:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-topbar__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+}
+
+.prototype-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 10px;
+  padding: 6px 10px;
+  border: 1px solid #dfe2ff;
+  border-radius: 999px;
+  color: #5f68a7;
+  background: #f3f4ff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.prototype-badge span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5b67f1;
+  box-shadow: 0 0 0 4px rgba(91, 103, 241, 0.1);
+}
+
+.app-main {
+  min-width: 0;
+  min-height: calc(100vh - 66px);
+}
+
+.status-pill {
+  display: inline-flex;
+  min-height: 27px;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pill .ant-badge {
+  line-height: 0;
+}
+
+.metric-card .ant-card-body {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.metric-card__icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 15px;
+  font-size: 21px;
+}
+
+.metric-card__icon--purple {
+  color: #5b67f1;
+  background: #eff0ff;
+}
+
+.metric-card__icon--blue {
+  color: #3284d7;
+  background: #edf6ff;
+}
+
+.metric-card__icon--green {
+  color: #20a779;
+  background: #ebf9f4;
+}
+
+.metric-card__icon--orange {
+  color: #df9131;
+  background: #fff5e6;
+}
+
+.metric-card__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.metric-card__body > span {
+  color: #7c8599;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.metric-card__body > strong {
+  display: block;
+  margin-top: 3px;
+  color: #202941;
+  font-size: 25px;
+  letter-spacing: -0.03em;
+}
+
+.metric-card__footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 3px;
+  color: #9ba1b1;
+  font-size: 10px;
+}
+
+.metric-card__footer em {
+  color: #20a779;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@media (max-width: 1280px) {
+  .app-shell {
+    grid-template-columns: 82px minmax(0, 1fr);
+  }
+
+  .app-rail {
+    width: 82px;
+  }
+
+  .app-nav__item.is-active::before {
+    left: -10px;
+  }
+}

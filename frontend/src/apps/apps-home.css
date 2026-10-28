@@ -1,0 +1,86 @@
+.apps-home__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.apps-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 7px 24px rgba(34, 44, 82, 0.04);
+}
+
+.apps-card header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.apps-card header > div {
+  min-width: 0;
+}
+
+.apps-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #202941;
+  font-size: 16px;
+}
+
+.apps-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.apps-card__tags .ant-tag {
+  margin: 0;
+}
+
+.apps-card p {
+  flex: 1;
+  margin: 0;
+  color: #5d667c;
+  line-height: 1.7;
+}
+
+.apps-card .ant-btn {
+  align-self: flex-start;
+}
+
+.apps-card__icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+.apps-card__icon--message {
+  color: #5b67f1;
+  background: #eef0ff;
+}
+
+.apps-card__icon--customer {
+  color: #3284d7;
+  background: #edf6ff;
+}
+
+.apps-card__icon--file {
+  color: #df9131;
+  background: #fff5e8;
+}
+
+@media (max-width: 1280px) {
+  .apps-home__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
